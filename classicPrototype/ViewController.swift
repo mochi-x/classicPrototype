@@ -111,7 +111,16 @@ class ViewController: NSViewController, NSTextViewDelegate {
     }
     
     @IBAction func pushNewPageButton(_ sender: Any) {
-        print(saveFilename)
+        let fm = FileManager.default
+        let newFileNumber: Int = Int(saveFilename.components(separatedBy: ".")[0])! + 1
+        let newFilename: String = String(newFileNumber) + ".md"
+        
+        fm.createFile(
+            atPath:  documentDirectoryPath + "/" + newFilename,
+            contents: "".data(using: .utf8)!, attributes: nil
+        )
+        
+        loadLatestFileInfo()
     }
     
     override var representedObject: Any? {
