@@ -11,35 +11,37 @@ class ViewController: NSViewController, NSTextViewDelegate {
     
     @IBOutlet var textEditor: NSTextView!
     
-    var timer: Timer!
+    // Input text relations
     var inputText: String = ""
-    var saveFilename: String = "1.md"
+    
+    // File save path relations
+    var saveFilename: String = ""
+    let documentDirectoryPath = NSHomeDirectory() + "/Documents"
+ 
+    // File save timer relations
+    var timer: Timer!
     var saveCounter: Int = 0
-    let saveTargetCount: Int = 5
+    let saveExecCount: Int = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
         textEditor.delegate = self
         
+        // Load newest file.
+        loadLatestFileInfo()
+
         // Appearance restrict light mode.
         NSApp.appearance = NSAppearance(named: .aqua)
     }
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
-    }
     
     func textDidChange(_ notification: Notification) {
+        // Get the value written in a text editor.
         guard let textView = notification.object as? NSTextView else { return }
         inputText = textView.string
         
+        // Start save timer.
         saveCounter = 0
-        controlTimer()
-    }
-    
-    func controlTimer() {
+        
         if(timer != nil) {
             timer.invalidate()
             timer = nil
@@ -48,36 +50,73 @@ class ViewController: NSViewController, NSTextViewDelegate {
         timer = Timer.scheduledTimer(
             timeInterval: 1,
             target: self,
-            selector: #selector(judgeSaveText),
+            selector: #selector(saveText),
             userInfo: nil,
             repeats: true
         )
     }
     
-    @objc func judgeSaveText() {
+    @objc func saveText() {
         saveCounter += 1
-        
-        if(saveCounter == saveTargetCount) {
+
+        if(saveCounter == saveExecCount) {
+            // Timer init.
             timer.invalidate()
             timer = nil
 
-            do {
-                let fm = FileManager.default
-                let documentDirectory = try fm.url(
-                    for: .documentDirectory,
-                    in: .userDomainMask,
-                    appropriateFor: nil, create: false
-                )
-                let saveFilePath = documentDirectory.appendingPathComponent(saveFilename)
-                let textData = inputText.data(using: .utf8)!
+            // Text save logic.
+            let fm = FileManager.default
+            let saveFilePath = documentDirectoryPath + "/" + saveFilename
+            let textData = inputText.data(using: .utf8)!
 
-                fm.createFile(
-                    atPath: saveFilePath.path,
-                    contents: textData, attributes: nil
-                )
-            } catch {
-                print(error)
+            fm.createFile(
+                atPath: saveFilePath,
+                contents: textData, attributes: nil
+            )
+        }
+    }
+    
+    func loadLatestFileInfo() {
+        do {
+            let fm = FileManager.default
+            let fileList: Array = try fm.contentsOfDirectory(atPath: NSHomeDirectory() + "/Documents")
+            let filteredFileList: Array = fileList.filter {
+                $0.contains(".md") &&
+                Int($0.components(separatedBy: ".")[0]) != nil
             }
+
+            // Load latest file or create file.
+            if (filteredFileList.count == 0) {
+                saveFilename = "1.md"
+                fm.createFile(
+                    atPath:  documentDirectoryPath + "/" + saveFilename,
+                    contents: "".data(using: .utf8)!, attributes: nil
+                )
+            } else {
+                // Specify the latest file.
+                let fileNumberList: Array = filteredFileList.map {
+                    Int($0.components(separatedBy: ".")[0])!
+                }
+                saveFilename = String(fileNumberList.max()!) + ".md"
+                
+                // Load Text from latest file.
+                textEditor.string = try String(
+                    contentsOfFile: documentDirectoryPath + "/" + saveFilename,
+                    encoding: String.Encoding.utf8
+                )
+            }
+        } catch {
+           print(error)
+        }
+    }
+    
+    @IBAction func pushNewPageButton(_ sender: Any) {
+        print(saveFilename)
+    }
+    
+    override var representedObject: Any? {
+        didSet {
+        // Update the view, if already loaded.
         }
     }
 }

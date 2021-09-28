@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B64142926F1A6B8003A2D28 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B64142826F1A6B8003A2D28 /* MainMenu.swift */; };
 		3BEC634726E88C5600FCDDBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEC634626E88C5600FCDDBE /* AppDelegate.swift */; };
 		3BEC634926E88C5600FCDDBE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEC634826E88C5600FCDDBE /* ViewController.swift */; };
 		3BEC634B26E88C5800FCDDBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BEC634A26E88C5800FCDDBE /* Assets.xcassets */; };
@@ -16,7 +15,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3B64142826F1A6B8003A2D28 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		3BEC634326E88C5600FCDDBE /* classicPrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = classicPrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BEC634626E88C5600FCDDBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BEC634826E88C5600FCDDBE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,7 +60,6 @@
 				3BEC634826E88C5600FCDDBE /* ViewController.swift */,
 				3BEC634A26E88C5800FCDDBE /* Assets.xcassets */,
 				3BEC634C26E88C5800FCDDBE /* Main.storyboard */,
-				3B64142826F1A6B8003A2D28 /* MainMenu.swift */,
 				3BEC634F26E88C5800FCDDBE /* Info.plist */,
 				3BEC635026E88C5800FCDDBE /* classicPrototype.entitlements */,
 			);
@@ -141,7 +138,6 @@
 				3BEC634926E88C5600FCDDBE /* ViewController.swift in Sources */,
 				3BEC635726E8FD7C00FCDDBE /* WindowController.swift in Sources */,
 				3BEC634726E88C5600FCDDBE /* AppDelegate.swift in Sources */,
-				3B64142926F1A6B8003A2D28 /* MainMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main Menu-->
+        <!--Application-->
         <scene sceneID="JPo-4y-FX3">
             <objects>
-                <application id="hnw-xV-0zn" customClass="MainMenu" customModule="classicPrototype" customModuleProvider="target" sceneMemberID="viewController">
+                <application id="hnw-xV-0zn" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
                             <menuItem title="classicPrototype" id="1Xt-HY-uBw">
@@ -55,28 +57,6 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="File" id="dMs-cI-mzQ">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="File" id="bib-Uj-vzu">
-                                    <items>
-                                        <menuItem title="New" keyEquivalent="n" id="Was-JA-tGl">
-                                            <connections>
-                                                <action selector="newDocument:" target="Ady-hI-5gd" id="4Si-XN-c54"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
-                                            <connections>
-                                                <action selector="openDocument:" target="Ady-hI-5gd" id="bVn-NM-KNZ"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Save…" keyEquivalent="s" id="pxx-59-PXV">
-                                            <connections>
-                                                <action selector="saveText:" target="hnw-xV-0zn" id="p8O-Tx-5bg"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                </menu>
-                            </menuItem>
                             <menuItem title="Edit" id="5QF-Oa-p0T">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Edit" id="W48-6f-4Dl">
@@ -107,11 +87,13 @@
                             </menuItem>
                         </items>
                     </menu>
-                    <connections>
-                        <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
-                    </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="classicPrototype" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="ViewController" customModule="classicPrototype" customModuleProvider="target">
+                    <connections>
+                        <outlet property="mainMenu" destination="AYu-sK-qS6" id="7XG-nX-qSw"/>
+                    </connections>
+                </customObject>
+                <customObject id="JJn-Df-y3e" customClass="AppDelegate" customModule="classicPrototype" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -172,15 +154,29 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GAV-j0-bo9">
+                                <rect key="frame" x="454" y="247.5" width="14.5" height="13"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="2KI-pl-hmZ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <imageReference key="image" image="NSAddTemplate" symbolScale="medium"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="pushNewPageButton:" target="XfG-lQ-9wD" id="y9B-lF-bVp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Mc4-jV-vx8" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="2wE-ZE-hhV"/>
                             <constraint firstAttribute="bottom" secondItem="Mc4-jV-vx8" secondAttribute="bottom" id="a7D-HQ-x52"/>
                             <constraint firstItem="Mc4-jV-vx8" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="iaU-Xe-2qb"/>
+                            <constraint firstAttribute="trailing" secondItem="GAV-j0-bo9" secondAttribute="trailing" constant="12" id="jA4-pW-lYs"/>
+                            <constraint firstItem="GAV-j0-bo9" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="12" id="vMq-Qc-tcv"/>
                             <constraint firstAttribute="trailing" secondItem="Mc4-jV-vx8" secondAttribute="trailing" id="xxS-ac-651"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="pushNewPageButton" destination="Mc4-jV-vx8" id="9NM-Re-gTP"/>
                         <outlet property="textEditor" destination="0UW-sg-Bb4" id="LSx-Mq-CYY"/>
                     </connections>
                 </viewController>
@@ -189,4 +185,7 @@
             <point key="canvasLocation" x="75" y="655"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSAddTemplate" width="14" height="13"/>
+    </resources>
 </document>
