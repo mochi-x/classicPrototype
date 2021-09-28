@@ -155,8 +155,8 @@
                                 </scroller>
                             </scrollView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GAV-j0-bo9">
-                                <rect key="frame" x="454" y="247.5" width="14.5" height="13"/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="2KI-pl-hmZ">
+                                <rect key="frame" x="12" y="247.5" width="456.5" height="13"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" imagePosition="right" alignment="right" imageScaling="proportionallyDown" inset="2" id="2KI-pl-hmZ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <imageReference key="image" image="NSAddTemplate" symbolScale="medium"/>
@@ -169,6 +169,7 @@
                         <constraints>
                             <constraint firstItem="Mc4-jV-vx8" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="2wE-ZE-hhV"/>
                             <constraint firstAttribute="bottom" secondItem="Mc4-jV-vx8" secondAttribute="bottom" id="a7D-HQ-x52"/>
+                            <constraint firstItem="GAV-j0-bo9" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="12" id="i0A-Pm-eBj"/>
                             <constraint firstItem="Mc4-jV-vx8" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="iaU-Xe-2qb"/>
                             <constraint firstAttribute="trailing" secondItem="GAV-j0-bo9" secondAttribute="trailing" constant="12" id="jA4-pW-lYs"/>
                             <constraint firstItem="GAV-j0-bo9" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="12" id="vMq-Qc-tcv"/>
