@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B34201E27035777009AA07D /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 3B34201D27035777009AA07D /* LICENSE */; };
 		3BEC634726E88C5600FCDDBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEC634626E88C5600FCDDBE /* AppDelegate.swift */; };
 		3BEC634926E88C5600FCDDBE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEC634826E88C5600FCDDBE /* ViewController.swift */; };
 		3BEC634B26E88C5800FCDDBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BEC634A26E88C5800FCDDBE /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		3B34201C270356C3009AA07D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		3B34201D27035777009AA07D /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		3BEC634326E88C5600FCDDBE /* classicPrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = classicPrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BEC634626E88C5600FCDDBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BEC634826E88C5600FCDDBE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +43,7 @@
 			isa = PBXGroup;
 			children = (
 				3B34201C270356C3009AA07D /* README.md */,
+				3B34201D27035777009AA07D /* LICENSE */,
 				3BEC634526E88C5600FCDDBE /* classicPrototype */,
 				3BEC634426E88C5600FCDDBE /* Products */,
 			);
@@ -125,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B34201E27035777009AA07D /* LICENSE in Resources */,
 				3BEC634B26E88C5800FCDDBE /* Assets.xcassets in Resources */,
 				3BEC634E26E88C5800FCDDBE /* Main.storyboard in Resources */,
 			);
