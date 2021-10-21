@@ -11,17 +11,21 @@ class ViewController: NSViewController, NSTextViewDelegate {
     
     @IBOutlet var textEditor: NSTextView!
     
-    // Input text relations
+    // Input text property.
     var inputText: String = ""
     
-    // File save path relations
+    // File save path property.
     var saveFilename: String = ""
     let documentDirectoryPath = NSHomeDirectory() + "/Documents"
  
-    // File save timer relations
+    // File save timer property.
     var timer: Timer!
     var saveCounter: Int = 0
     let saveExecCount: Int = 5
+    
+    // Other.
+    var firstText: String = ""
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +39,26 @@ class ViewController: NSViewController, NSTextViewDelegate {
     }
     
     func textDidChange(_ notification: Notification) {
-        // Get the value written in a text editor.
         guard let textView = notification.object as? NSTextView else { return }
+
+        if let undoManager = undoManager {
+            undoManager.registerUndo(
+                withTarget: self,
+                handler: {
+                    [undoText = inputText] (_) -> Void in
+                    self.textEditor.string = undoText
+                    undoManager.registerUndo(
+                        withTarget: self,
+                        handler: {
+                            [redoText = self.inputText] (_) -> Void in
+                            self.textEditor.string = redoText
+                        }
+                    )
+                }
+            )
+        }
+        
+        // Get the value written in a text editor.
         inputText = textView.string
         
         // Start save timer.
